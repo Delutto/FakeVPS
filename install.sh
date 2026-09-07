@@ -199,7 +199,7 @@ boot_qemu() {
         source .vps_env
     fi
 
-    TCP_HOST_PORT=${TCP_HOST_PORT:-2223}
+    TCP_HOST_PORT=${TCP_HOST_PORT:-2222}
     TCP_GUEST_PORT=${TCP_GUEST_PORT:-22}
     RAM_VALUE="${RAM_GB:-32}G"
 
