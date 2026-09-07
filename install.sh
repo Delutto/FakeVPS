@@ -75,7 +75,7 @@ show_menu() {
     echo ""
     echo -e "  ${CYAN}[1]${NC} Create & Boot New Ubuntu VPS Instance"
     echo -e "  ${CYAN}[2]${NC} Restart Existing VPS Instance"
-    echo -e "  ${CYAN}[3]${NC} Modify TCP Port Forward Rules (Default: 2222)"
+    echo -e "  ${CYAN}[3]${NC} Modify TCP Port Forward Rules (Default: 2223)"
     echo -e "  ${CYAN}[4]${NC} Remove/Clean VPS Cache Files"
     echo -e "  ${CYAN}[5]${NC} Exit Dashboard"
     echo ""
@@ -114,8 +114,8 @@ create_vps() {
     read USER_PASS
     USER_PASS=${USER_PASS:-1234}
     
-    # 2222 is set as the foundational port base
-    TCP_HOST_PORT=${TCP_HOST_PORT:-2222}
+    # 2223 is set as the foundational port base
+    TCP_HOST_PORT=${TCP_HOST_PORT:-2223}
     TCP_GUEST_PORT=22
 
     echo ""
@@ -164,12 +164,12 @@ configure_tcp() {
     if [ -f ".vps_env" ]; then
         source .vps_env
     fi
-    echo -e "Current Target Host Port  : ${CYAN}${TCP_HOST_PORT:-2222}${NC}"
+    echo -e "Current Target Host Port  : ${CYAN}${TCP_HOST_PORT:-2223}${NC}"
     echo -e "Current Guest VM Port     : ${CYAN}${TCP_GUEST_PORT:-22}${NC}"
     echo ""
-    echo -ne "${BLUE}🔹 Enter NEW External Host Port (Default base: 2222): ${NC}"
+    echo -ne "${BLUE}🔹 Enter NEW External Host Port (Default base: 2223): ${NC}"
     read NEW_HOST_PORT
-    TCP_HOST_PORT=${NEW_HOST_PORT:-2222}
+    TCP_HOST_PORT=${NEW_HOST_PORT:-2223}
     
     echo -ne "${BLUE}🔹 Enter Internal Guest Port (Default SSH: 22): ${NC}"
     read NEW_GUEST_PORT
@@ -187,7 +187,7 @@ save_env() {
     echo "CPU_CORES=${CPU_CORES:-4}" >> .vps_env
     echo "USER_NAME=${USER_NAME:-ubuntu}" >> .vps_env
     echo "USER_PASS=${USER_PASS:-1234}" >> .vps_env
-    echo "TCP_HOST_PORT=${TCP_HOST_PORT:-2222}" >> .vps_env
+    echo "TCP_HOST_PORT=${TCP_HOST_PORT:-2223}" >> .vps_env
     echo "TCP_GUEST_PORT=${TCP_GUEST_PORT:-22}" >> .vps_env
 }
 
@@ -197,7 +197,7 @@ boot_qemu() {
         source .vps_env
     fi
 
-    TCP_HOST_PORT=${TCP_HOST_PORT:-2222}
+    TCP_HOST_PORT=${TCP_HOST_PORT:-2223}
     TCP_GUEST_PORT=${TCP_GUEST_PORT:-22}
     RAM_VALUE="${RAM_GB:-32}G"
 
