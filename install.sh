@@ -116,7 +116,7 @@ create_vps() {
     
     # 2223 is set as the foundational port base
     TCP_HOST_PORT=${TCP_HOST_PORT:-2223}
-    TCP_GUEST_PORT=22
+    TCP_GUEST_PORT=23
 
     echo ""
     echo -e "${YELLOW}⏳ Background core dependencies install ho rahi hain... Please wait.${NC}"
